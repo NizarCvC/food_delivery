@@ -11,7 +11,7 @@ class FoodDeiveryApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Starvy Meal",
-      home: Homepage(),
+      home: const Homepage(),
     );
   }
 }
