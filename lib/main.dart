@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/pages/homepage.dart';
+import 'package:food_delivery/pages/bottom_navbar.dart';
 
-void main() => runApp(FoodDeiveryApp());
+void main() => runApp(FoodDeliveryApp());
 
-class FoodDeiveryApp extends StatelessWidget {
-  const FoodDeiveryApp({super.key});
+class FoodDeliveryApp extends StatelessWidget {
+  const FoodDeliveryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Starvy Meal",
-      home: const Homepage(),
+      home: const BottomNavbar(),
     );
   }
 }

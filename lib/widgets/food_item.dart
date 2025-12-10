@@ -8,6 +8,7 @@ class FoodItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.0),
       child: Container(
@@ -24,16 +25,19 @@ class FoodItem extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: size.height * 0.012),
               Text(
                 food.name,
-                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              SizedBox(height: 4),
+              SizedBox(height: size.height * 0.005),
               Text(
                 '\$${food.price}',
                 style: const TextStyle(
-                  fontSize: 11,
+                  fontSize: 13,
                   color: Colors.deepOrange,
                   fontWeight: FontWeight.w500,
                 ),

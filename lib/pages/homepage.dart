@@ -7,36 +7,31 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text('Starvy Meal'),
-        backgroundColor: Colors.grey[100],
-      ),
-      drawer: const Drawer(child: Center(child: Text('I am in the drawer'))),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
               child: Image.asset(
                 'assets/images/Orange Modern Special Sale Food Banner.png',
-                height: 200,
+                height: size.height * 0.23,
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 32.0),
-            Expanded(
-              child: GridView.builder(
-                itemCount: food.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                ),
-                itemBuilder: (context, index) => FoodItem(food: food[index]),
+            SizedBox(height: size.height * 0.025),
+            GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: food.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
               ),
+              itemBuilder: (context, index) => FoodItem(food: food[index]),
             ),
           ],
         ),
