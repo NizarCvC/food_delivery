@@ -31,7 +31,7 @@ class Homepage extends StatelessWidget {
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
               ),
-              itemBuilder: (context, index) => FoodItem(food: food[index]),
+              itemBuilder: (context, index) => FoodItem(foodIndex: index),
             ),
           ],
         ),

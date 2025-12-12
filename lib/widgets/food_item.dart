@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/models/food_item_model.dart';
 
 class FoodItem extends StatefulWidget {
-  final FoodItemModel food;
+  final int foodIndex;
 
-  const FoodItem({super.key, required this.food});
+  const FoodItem({super.key, required this.foodIndex});
 
   @override
   State<FoodItem> createState() => _FoodItemState();
 }
 
 class _FoodItemState extends State<FoodItem> {
-  bool isFav = false;
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -31,7 +29,7 @@ class _FoodItemState extends State<FoodItem> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        widget.food.imageUrl,
+                        food[widget.foodIndex].imageUrl,
                         height: size.height * 0.11,
                         width: size.width * 0.9,
                         fit: BoxFit.fill,
@@ -48,10 +46,17 @@ class _FoodItemState extends State<FoodItem> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: InkWell(
-                        onTap: () => setState(() => isFav = !isFav),
+                        onTap: () => setState(() {
+                          food[widget.foodIndex] = food[widget.foodIndex]
+                              .copyWith(
+                                isFavorite: !food[widget.foodIndex].isFavorite,
+                              );
+                        }),
                         child: Icon(
                           size: 20,
-                          isFav ? Icons.favorite : Icons.favorite_border,
+                          food[widget.foodIndex].isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border,
                           color: Colors.redAccent,
                         ),
                       ),
@@ -61,7 +66,7 @@ class _FoodItemState extends State<FoodItem> {
               ),
               SizedBox(height: size.height * 0.012),
               Text(
-                widget.food.name,
+                food[widget.foodIndex].name,
                 style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
@@ -69,7 +74,7 @@ class _FoodItemState extends State<FoodItem> {
               ),
               SizedBox(height: size.height * 0.005),
               Text(
-                '\$${widget.food.price}',
+                '\$${food[widget.foodIndex].price}',
                 style: const TextStyle(
                   fontSize: 13,
                   color: Colors.deepOrange,

@@ -7,9 +7,23 @@ class FoodItemModel {
   FoodItemModel({
     required this.imageUrl,
     required this.name,
-    required this.price, 
+    required this.price,
     this.isFavorite = false,
   });
+
+  FoodItemModel copyWith({
+    String? imageUrl,
+    String? name,
+    double? price,
+    bool? isFavorite,
+  }) {
+    return FoodItemModel(
+      imageUrl: imageUrl ?? this.imageUrl,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 }
 
 List<FoodItemModel> food = [
@@ -30,7 +44,6 @@ List<FoodItemModel> food = [
         'https://www.francoislambert.one/cdn/shop/articles/mac_poulet_corn_flakes.webp?v=1723557298',
     name: 'Crispy Chicken Burger',
     price: 9.0,
-    isFavorite: true
   ),
   FoodItemModel(
     imageUrl:
