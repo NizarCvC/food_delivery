@@ -23,6 +23,7 @@ class _FoodItemState extends State<FoodItem> {
           child: Column(
             children: [
               Stack(
+                alignment: AlignmentGeometry.topCenter,
                 children: [
                   Align(
                     alignment: Alignment.center,
@@ -31,7 +32,7 @@ class _FoodItemState extends State<FoodItem> {
                       child: Image.network(
                         food[widget.foodIndex].imageUrl,
                         height: size.height * 0.11,
-                        width: size.width * 0.9,
+                        width: size.width * 0.8,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -57,7 +58,7 @@ class _FoodItemState extends State<FoodItem> {
                           food[widget.foodIndex].isFavorite
                               ? Icons.favorite
                               : Icons.favorite_border,
-                          color: Colors.redAccent,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -67,17 +68,13 @@ class _FoodItemState extends State<FoodItem> {
               SizedBox(height: size.height * 0.012),
               Text(
                 food[widget.foodIndex].name,
-                style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: Theme.of(context).textTheme.labelMedium,
               ),
               SizedBox(height: size.height * 0.005),
               Text(
                 '\$${food[widget.foodIndex].price}',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.deepOrange,
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.w500,
                 ),
               ),

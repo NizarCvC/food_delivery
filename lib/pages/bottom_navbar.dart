@@ -19,20 +19,12 @@ class _BottomNavbarState extends State<BottomNavbar> {
     });
   }
 
-  List<Widget> bodyOptions = const [
-    Homepage(),
-    FavoritePage(),
-    AccountPage(),
-  ];
+  List<Widget> bodyOptions = const [Homepage(), FavoritePage(), AccountPage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text('Starvy Meal'),
-        backgroundColor: Colors.grey[100],
-      ),
+      appBar: AppBar(title: Text('Starvy Meal')),
       body: bodyOptions[selectedIndex],
       drawer: const Drawer(child: Center(child: Text('I am in the drawer'))),
       bottomNavigationBar: BottomNavigationBar(
@@ -45,7 +37,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.deepOrange,
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: onItemTapped,
       ),
     );

@@ -26,9 +26,9 @@ class _FavoritePageState extends State<FavoritePage> {
               width: size.width * 0.6,
               fit: BoxFit.contain,
             ),
-            const Text(
+            Text(
               'No favorite items found!',
-              style: TextStyle(fontSize: 22),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ],
         ),
@@ -61,19 +61,17 @@ class _FavoritePageState extends State<FavoritePage> {
                       children: [
                         Text(
                           favoriteFood[index].name,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge!
+                              .copyWith(fontWeight: FontWeight.w600),
                         ),
                         SizedBox(height: size.height * 0.006),
                         Text(
                           '\$ ${favoriteFood[index].price}',
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.deepOrange,
-                          ),
+                          style: Theme.of(context).textTheme.labelLarge!
+                              .copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: Theme.of(context).primaryColor,
+                              ),
                         ),
                       ],
                     ),
@@ -91,7 +89,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     },
                     icon: Icon(
                       Icons.favorite,
-                      color: Colors.redAccent,
+                      color: Theme.of(context).primaryColor,
                       size: 30,
                     ),
                   ),

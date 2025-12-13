@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
 
-  Widget orderVoucherItem({required int total, required String name}) {
+  Widget orderVoucherItem(
+    BuildContext context, {
+    required int total,
+    required String name,
+  }) {
     return Column(
       children: [
         Text(
           '$total',
-          style: const TextStyle(
-            fontSize: 22,
+          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
             fontWeight: FontWeight.w600,
-            color: Colors.deepOrange,
+            color: Theme.of(context).primaryColor,
           ),
         ),
         Text(name, style: const TextStyle(fontSize: 18)),
@@ -27,12 +30,8 @@ class AccountPage extends StatelessWidget {
     return ListTile(
       title: Text(title),
       subtitle: subTitle != null ? Text(subTitle) : null,
-      leading: Icon(icon, size: 30, color: Colors.deepOrange),
-      trailing: const Icon(
-        Icons.chevron_right,
-        size: 25,
-        color: Colors.deepOrange,
-      ),
+      leading: Icon(icon, size: 30),
+      trailing: Icon(Icons.chevron_right, size: 25),
       onTap: () => debugPrint('Hello'),
     );
   }
@@ -43,6 +42,7 @@ class AccountPage extends StatelessWidget {
     return Center(
       child: Column(
         children: [
+          SizedBox(height: size.height * 0.025),
           Container(
             height: 140,
             width: 140,
@@ -57,26 +57,27 @@ class AccountPage extends StatelessWidget {
           SizedBox(height: size.height * 0.03),
           Text(
             'Nizar Omar',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.w600),
           ),
           SizedBox(height: size.height * 0.025),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              orderVoucherItem(total: 50, name: 'Orders'),
-              orderVoucherItem(total: 10, name: 'Vouchers'),
+              orderVoucherItem(context, total: 50, name: 'Orders'),
+              orderVoucherItem(context, total: 10, name: 'Vouchers'),
             ],
           ),
-          SizedBox(height: 24.0),
-          const Divider(thickness: 2, indent: 20, endIndent: 20),
-
+          SizedBox(height: size.height * 0.02),
+          const Divider(),
           itemTappedTile(title: 'Previous orders', icon: Icons.shopping_cart),
-          const Divider(thickness: 2, indent: 20, endIndent: 20),
+          const Divider(),
           itemTappedTile(
             title: 'Available vouchers',
             icon: Icons.card_giftcard,
           ),
-          const Divider(thickness: 2, indent: 20, endIndent: 20),
+          const Divider(),
         ],
       ),
     );
